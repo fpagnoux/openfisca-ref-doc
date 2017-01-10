@@ -6,12 +6,20 @@
 Openfisca reference documentation
 =================================
 
-Contents:
+Modules:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    taxbenefitsystem
+   test_runner
+
+Scripts:
+
+.. toctree::
+   :maxdepth: 1
+
+   openfisca-run-test
 
 
 
