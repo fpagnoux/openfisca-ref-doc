@@ -1,2 +1,2 @@
-openfisca_core==4.0.0dev10
+openfisca_core==4.2.0.dev2
 sphinx-argparse
