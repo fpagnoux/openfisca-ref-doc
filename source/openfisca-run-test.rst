@@ -196,3 +196,34 @@ Let's now assume an extension to ``openfisca_france``, ``openfisca_paris`` is in
 
   openfisca-run-test -e openfisca_paris test_5.yaml
   # Success : The test passes, as the extension is loaded in the tax benefit system before running the test
+
+
+Reforms
+^^^^^^^
+
+Let's assume that I want to test a reform that lowers ``net_salary`` to 60% of ``gross_salary`` (instead of 80% in the regular ``openfisca_france``).
+
+This reform is called ``increase_cotisation`` and available in the python module ``openfisca_france.reforms.increase_cotisation``.
+
+
+**test_6.yaml:**
+
+.. code-block:: yaml
+
+    - name: "Test on a reform"
+      period: 2015
+      input_variables:
+        gross_salary: 1000
+      output_variables:
+        net_salary: 600
+
+
+**Command line:**
+
+.. code-block:: shell
+
+  openfisca-run-test test_6.yaml
+  # Failure : the test does not pass, as the regular openfisca_france is used
+
+  openfisca-run-test -r openfisca_france.reforms.increase_cotisation.increase_cotisation test_5.yaml
+  # Success : The test passes, as the increase_cotisation reform is applied
